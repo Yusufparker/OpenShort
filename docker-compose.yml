@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  openshort-app:
+    image: ghcr.io/yusufparker/openshort:latest
+    container_name: openshort
+    restart: always
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env
+    volumes:
+      - ./prisma:/app/prisma
