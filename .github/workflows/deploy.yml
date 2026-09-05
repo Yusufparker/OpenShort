@@ -64,6 +64,7 @@ jobs:
             docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} &&
             docker compose pull &&
             docker compose up -d &&
+            chown -R 1001:65533 ~/apps/openshort/prisma &&
             echo 'Waiting for container to start...' &&
             sleep 5 &&
             docker exec openshort npx -y prisma@6.19.3 db push --accept-data-loss
